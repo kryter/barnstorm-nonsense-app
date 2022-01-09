@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>Barnstorm Nonsense App</h1>
+        <h1>Barnstorm Nonsense</h1>
       </header>
       <div className="app-content">
         <Counter />
