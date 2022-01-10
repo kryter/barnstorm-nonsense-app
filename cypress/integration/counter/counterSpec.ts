@@ -10,7 +10,7 @@ describe('Counter', () => {
   let instruments: AppInstruments;
   let counterPage: CounterPage;
 
-  it('Setup Instruments and Pages To Visit the Entry Url', () => {
+  it('Setup instruments and pages, and visit the entry url', () => {
     instruments = buildAppInstruments();
     counterPage = setupCounterPage(instruments);
 
@@ -22,7 +22,9 @@ describe('Counter', () => {
       counterPage,
       expectedCount: 1
     }));
+  });
 
+  it('Click the counter button again to increment the count displayed on the button again', () => {
     fly(instruments, clickToIncrementTheCount({
       counterPage,
       expectedCount: 2
