@@ -2,19 +2,27 @@
 
 import { fly } from '@kryter/barnstorm/lib/fly';
 import { buildAppInstruments, AppInstruments } from '../../../src/barnstorm/AppInstruments';
-import { COUNTER_URL, ENTRY_URL } from '../../../src/barnstorm/AppUrls';
+import { COUNTER_URL } from '../../../src/barnstorm/AppUrls';
 import { CounterPage, setupCounterPage } from '../../../src/counter/CounterPage';
-import { clickToIncrementTheCount } from '../../../src/counter/CounterFlightPlans';
+import {clickToIncrementTheCount, fillOutForm} from '../../../src/counter/CounterFlightPlans';
 
 describe('Counter', () => {
   let instruments: AppInstruments;
   let counterPage: CounterPage;
 
-  it('Setup instruments and pages, and visit the entry url', () => {
+  it('Setup instruments and pages, and visit the counter url', () => {
     instruments = buildAppInstruments();
     counterPage = setupCounterPage(instruments);
 
     instruments.url().visit(COUNTER_URL);
+  });
+
+  it('Fill out the form', () => {
+    fly(instruments, fillOutForm({
+      counterPage,
+      title: 'Testing is fun',
+      description: 'It is especially fun when using Cypress and Barnstorm!'
+    }));
   });
 
   it('Click the counter button to increment the count displayed on the button', () => {

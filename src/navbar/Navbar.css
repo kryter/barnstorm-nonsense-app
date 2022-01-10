@@ -1,0 +1,35 @@
+.navbar-tab-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.app-header {
+  background-color: #282c34;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.navbar-tab-button {
+  margin: 4px;
+}
+
+.navbar-tab-button:link {
+  color: white;
+}
+
+.navbar-tab-button:visited {
+  color: white;
+}
+
+.navbar-tab-button:hover {
+  color: hotpink;
+}
+
+.navbar-tab-button:active {
+  color: white;
+}

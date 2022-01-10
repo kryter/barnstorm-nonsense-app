@@ -20,9 +20,9 @@ function NonsenseTable() {
       <tbody>
         {data.map((row, rowIndex) => (
           <tr key={rowIndex.toString()}>
-            <td>{data[rowIndex][0]}</td>
-            <td>{data[rowIndex][1]}</td>
-            <td>{data[rowIndex][2]}</td>
+            <td>{row[0]}</td>
+            <td>{row[1]}</td>
+            <td>{row[2]}</td>
           </tr>
         ))}
       </tbody>

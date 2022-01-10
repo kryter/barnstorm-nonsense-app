@@ -25,3 +25,45 @@ export function clickToIncrementTheCount({counterPage, expectedCount}: ClickToIn
     ]
   };
 }
+
+export interface FillOutFormOptions {
+  counterPage: CounterPage;
+  title: string;
+  description: string;
+}
+
+export function fillOutForm({counterPage, title, description}: FillOutFormOptions): FlightPlan {
+  return {
+    legs: [
+      {
+        doTestAction: (instruments: AppInstruments) => {
+          counterPage.titleTextBox().enterText(title);
+        },
+        updateExpectations: (instruments: AppInstruments) => {
+          counterPage.titleTextBox().updateState({
+            inputText: title
+          });
+        }
+      },
+      {
+        doTestAction: (instruments: AppInstruments) => {
+          counterPage.descriptionTextArea().enterText(description);
+        },
+        updateExpectations: (instruments: AppInstruments) => {
+          counterPage.descriptionTextArea().updateState({
+            inputText: description
+          });
+        }
+      },
+      {
+        doTestAction: (instruments: AppInstruments) => {
+          counterPage.aCheckbox().check();
+        },
+        updateExpectations: (instruments: AppInstruments) => {
+          // The checkbox automatically updates its expected state,
+          // so no updates are needed here.
+        }
+      }
+    ]
+  };
+}
