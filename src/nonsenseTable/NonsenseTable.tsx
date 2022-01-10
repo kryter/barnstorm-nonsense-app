@@ -9,28 +9,22 @@ function NonsenseTable() {
   ]);
 
   return (
-    <table>
+    <table className="nonsense-table">
       <thead>
         <tr>
           <th>one</th>
           <th>two</th>
           <th>three</th>
-          <th>four</th>
         </tr>
       </thead>
       <tbody>
         {data.map((row, rowIndex) => (
           <tr key={rowIndex.toString()}>
-            <td>{data[1]}</td>
-            <td>{data[2]}</td>
-            <td>{data[3]}</td>
-            <td>{data[4]}</td>
+            <td>{data[rowIndex][0]}</td>
+            <td>{data[rowIndex][1]}</td>
+            <td>{data[rowIndex][2]}</td>
           </tr>
         ))}
-        <tr >
-          <td>The table body</td>
-          <td>with two columns</td>
-        </tr>
       </tbody>
     </table>
   );
