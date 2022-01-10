@@ -1,6 +1,7 @@
-import { useState } from 'react'
 import Counter from '../counter/Counter';
 import './App.css'
+import NonsenseTable from '../nonsenseTable/NonsenseTable';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
@@ -9,7 +10,10 @@ function App() {
         <h1>Barnstorm Nonsense</h1>
       </header>
       <div className="app-content">
-        <Counter />
+      <Routes>
+        <Route path="/" element={ <NonsenseTable /> } />
+        <Route path="counter" element={ <Counter /> } />
+      </Routes>
       </div>
     </div>
   );

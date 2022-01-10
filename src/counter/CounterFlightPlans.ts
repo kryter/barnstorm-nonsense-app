@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
 import { FlightPlan } from '@kryter/barnstorm/lib/FlightPlan';
-import { AppInstruments } from '../../../src/barnstorm/AppInstruments';
-import { CounterPage } from '../../../src/counter/CounterPage';
+import { AppInstruments } from '../barnstorm/AppInstruments';
+import { CounterPage } from './CounterPage';
 
 export interface ClickToIncrementTheCountOptions {
   counterPage: CounterPage;
