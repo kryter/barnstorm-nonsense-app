@@ -1,3 +1,14 @@
-button {
-  font-size: calc(10px + 2vmin);
+.counter-form-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: auto;
+}
+
+.checkbox-container {
+  display: flex;
+}
+
+.form-item {
+  margin-bottom: 12px;
 }
