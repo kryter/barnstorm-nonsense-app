@@ -1,40 +1,43 @@
 /// <reference types="cypress" />
 
-import { fly } from '@kryter/barnstorm/lib/fly';
-import { buildAppInstruments, AppInstruments } from '../../../src/barnstorm/AppInstruments';
-import { COUNTER_URL } from '../../../src/barnstorm/AppUrls';
-import { CounterPage, setupCounterPage } from '../../../src/counter/CounterPage';
-import {clickToIncrementTheCount, fillOutForm} from '../../../src/counter/CounterFlightPlans';
+import { useAirplane, FlyFunction } from '@kryter/barnstorm/lib/useAirplane';
+import { AppInstruments, useInstruments } from '../../barnstorm/useInstruments';
+import { CounterTower, setupCounterTower } from '../../barnstorm/counter/CounterTower';
+import { useUrls } from '../../barnstorm/useUrls';
+import { clickToIncrementTheCount, fillOutForm } from '../../barnstorm/counter/CounterFlightPlans';
+
 
 describe('Counter', () => {
   let instruments: AppInstruments;
-  let counterPage: CounterPage;
+  let fly: FlyFunction;
+  let counterTower: CounterTower;
 
   it('Setup instruments and pages, and visit the counter url', () => {
-    instruments = buildAppInstruments();
-    counterPage = setupCounterPage(instruments);
+    instruments = useInstruments();
+    fly = useAirplane(instruments);
+    counterTower = setupCounterTower(instruments);
 
-    instruments.url().visit(COUNTER_URL);
+    instruments.url().visit(useUrls().counterUrl);
   });
 
   it('Fill out the form', () => {
-    fly(instruments, fillOutForm({
-      counterPage,
+    fly(fillOutForm({
+      counterTower,
       title: 'Testing is fun',
       description: 'It is especially fun when using Cypress and Barnstorm!'
     }));
   });
 
   it('Click the counter button to increment the count displayed on the button', () => {
-    fly(instruments, clickToIncrementTheCount({
-      counterPage,
+    fly(clickToIncrementTheCount({
+      counterTower,
       expectedCount: 1
     }));
   });
 
   it('Click the counter button again to increment the count displayed on the button again', () => {
-    fly(instruments, clickToIncrementTheCount({
-      counterPage,
+    fly(clickToIncrementTheCount({
+      counterTower,
       expectedCount: 2
     }));
   });

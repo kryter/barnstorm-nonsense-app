@@ -1,43 +1,45 @@
 /// <reference types="cypress" />
 
-import { fly } from '@kryter/barnstorm/lib/fly';
-import { buildAppInstruments, AppInstruments } from '../../../src/barnstorm/AppInstruments';
-import {  COUNTER_URL } from '../../../src/barnstorm/AppUrls';
-import { CounterPage, setupCounterPage } from '../../../src/counter/CounterPage';
-import { NavbarPage, setupNavbarPage } from '../../../src/navbar/NavbarPage';
-import { clickNavbarTabCounter, clickNavbarTabTable } from '../../../src/navbar/NavbarFlightPlans';
+import {FlyFunction, useAirplane} from '@kryter/barnstorm/lib/useAirplane';
+import { CounterTower, setupCounterTower } from '../../barnstorm/counter/CounterTower';
+import { AppInstruments, useInstruments } from '../../barnstorm/useInstruments';
+import { NavbarTower, setupNavbarTower } from '../../barnstorm/navbar/NavbarTower';
+import { useUrls } from '../../barnstorm/useUrls';
+import { clickNavbarTabCounter, clickNavbarTabTable } from '../../barnstorm/navbar/NavbarFlightPlans';
 
 describe('Navbar', () => {
   let instruments: AppInstruments;
-  let counterPage: CounterPage;
-  let navbarPage: NavbarPage;
+  let fly: FlyFunction;
+  let counterTower: CounterTower;
+  let navbarTower: NavbarTower;
 
   it('Setup instruments and pages, and visit the counter url', () => {
-    instruments = buildAppInstruments();
-    counterPage = setupCounterPage(instruments);
-    navbarPage = setupNavbarPage(instruments);
+    instruments = useInstruments();
+    fly = useAirplane(instruments);
+    counterTower = setupCounterTower(instruments);
+    navbarTower = setupNavbarTower(instruments);
 
-    instruments.url().visit(COUNTER_URL);
+    instruments.url().visit(useUrls().counterUrl);
   });
 
   it('Click the table tab to switch to the table page', () => {
-    fly(instruments, clickNavbarTabTable({
-      counterPage,
-      navbarPage
+    fly(clickNavbarTabTable({
+      counterTower,
+      navbarTower
     }));
   });
 
   it('Click the counter tab to switch to the counter page', () => {
-    fly(instruments, clickNavbarTabCounter({
-      counterPage,
-      navbarPage
+    fly(clickNavbarTabCounter({
+      counterTower,
+      navbarTower
     }));
   });
 
   it('Click the table tab to switch back to the table page', () => {
-    fly(instruments, clickNavbarTabTable({
-      counterPage,
-      navbarPage
+    fly(clickNavbarTabTable({
+      counterTower,
+      navbarTower
     }));
   });
 });

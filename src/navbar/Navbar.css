@@ -1,7 +1,3 @@
-.navbar-tab-container {
-  display: flex;
-  flex-direction: row;
-}
 
 .app-header {
   background-color: #282c34;
@@ -10,8 +6,23 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.app-home {
+  display: flex;
+}
+
+.app-logo {
+  margin: 10px;
+  aspect-ratio: 1;
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.navbar-tab-container {
+  display: flex;
+  flex-direction: row;
 }
 
 .navbar-tab-button {

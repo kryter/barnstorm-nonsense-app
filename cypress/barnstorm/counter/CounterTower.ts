@@ -5,13 +5,8 @@ import { CheckboxInstrument } from '@kryter/barnstorm/lib/instruments';
 import { TextAreaInstrument } from '@kryter/barnstorm/lib/instruments';
 import { TextBoxInstrument } from '@kryter/barnstorm/lib/instruments';
 
-const TITLE_TEXT_BOX = 'TITLE_TEXT_BOX';
-const DESCRIPTION_TEXT_AREA = 'DESCRIPTION_TEXT_AREA';
-const A_CHECKBOX = 'A_CHECKBOX';
-const COUNT_BUTTON = 'COUNT_BUTTON';
-
 const titleTextBox = {
-  id: TITLE_TEXT_BOX,
+  id: 'titleTextBox',
   instrumentType: INSTRUMENT_TYPES.TEXT_BOX,
   selector: '.title-text-box',
   initialState: {
@@ -20,7 +15,7 @@ const titleTextBox = {
 };
 
 const descriptionTextArea = {
-  id: DESCRIPTION_TEXT_AREA,
+  id: 'descriptionTextArea',
   instrumentType: INSTRUMENT_TYPES.TEXT_AREA,
   selector: '.description-text-area',
   initialState: {
@@ -29,7 +24,7 @@ const descriptionTextArea = {
 };
 
 const aCheckbox = {
-  id: A_CHECKBOX,
+  id: 'aCheckbox',
   instrumentType: INSTRUMENT_TYPES.CHECKBOX,
   selector: '.confirm-checkbox',
   initialState: {
@@ -37,16 +32,14 @@ const aCheckbox = {
   }
 };
 
-
 const counterButton = {
-  id: COUNT_BUTTON,
+  id: 'counterButton',
   instrumentType: INSTRUMENT_TYPES.BUTTON,
   selector: '.counter-button',
   initialState: {
     textContent: 'count is: 0'
   }
 };
-
 
 const configs = [
   titleTextBox,
@@ -55,17 +48,16 @@ const configs = [
   counterButton
 ];
 
-export function setupCounterPage(instrumentSet: InstrumentSet) {
-  configs.forEach(config => instrumentSet.setup(config));
+export function setupCounterTower(instruments: InstrumentSet) {
+  instruments.createInstruments(configs);
 
   return {
-    titleTextBox: () => instrumentSet.use<TextBoxInstrument>(TITLE_TEXT_BOX),
-    descriptionTextArea: () => instrumentSet.use<TextAreaInstrument>(DESCRIPTION_TEXT_AREA),
-    aCheckbox: () => instrumentSet.use<CheckboxInstrument>(A_CHECKBOX),
-    countButton: () => instrumentSet.use<ButtonInstrument>(COUNT_BUTTON),
-    setIsPresent: (iPresent: boolean) => instrumentSet.setIsPresent(configs.map(config => config.id), iPresent),
-    teardownCounterPage: () => instrumentSet.teardown(configs.map(config => config.id))
+    titleTextBox: () => instruments.use<TextBoxInstrument>(titleTextBox.id),
+    descriptionTextArea: () => instruments.use<TextAreaInstrument>(descriptionTextArea.id),
+    aCheckbox: () => instruments.use<CheckboxInstrument>(aCheckbox.id),
+    counterButton: () => instruments.use<ButtonInstrument>(counterButton.id),
+    instrumentIds: () => configs.map((config) => config.id)
   };
 }
 
-export type CounterPage = ReturnType<typeof setupCounterPage>;
+export type CounterTower = ReturnType<typeof setupCounterTower>;

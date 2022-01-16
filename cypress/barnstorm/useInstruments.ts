@@ -3,8 +3,8 @@ import { createMechanicGroup } from "@kryter/barnstorm-cypress/lib/createMechani
 
 const mechanicGroup = createMechanicGroup();
 
-export function buildAppInstruments(): InstrumentSet {
+export function useInstruments(): InstrumentSet {
   return new InstrumentSet(mechanicGroup);
 }
 
-export type AppInstruments = ReturnType<typeof buildAppInstruments>;
+export type AppInstruments = ReturnType<typeof useInstruments>;
