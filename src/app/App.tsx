@@ -3,6 +3,7 @@ import './App.css'
 import NonsenseTable from '../nonsenseTable/NonsenseTable';
 import { Route, Routes } from 'react-router-dom';
 import Navbar from '../navbar/Navbar';
+import Login from '../login/Login';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <div className="app-content">
         <Routes>
           <Route path="/" element={ <NonsenseTable /> } />
+          <Route path="login" element={ <Login /> } />
           <Route path="counter" element={ <Counter /> } />
         </Routes>
       </div>

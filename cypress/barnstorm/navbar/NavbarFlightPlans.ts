@@ -3,6 +3,7 @@ import { NavbarTower } from './NavbarTower';
 import { CounterTower } from '../counter/CounterTower';
 import { AppInstruments } from '../useInstruments';
 import { useUrls } from '../useUrls';
+import { ModalDialogTower } from '../modal/ModalTower';
 
 export interface ClickNavbarTabOptions {
   navbarTower: NavbarTower;
@@ -33,6 +34,33 @@ export function clickNavbarTabTable({navbarTower, counterTower}: ClickNavbarTabO
       instruments.url().updateState({
         currentUrl: useUrls().entryUrl
       });
+    }
+  };
+}
+
+export interface ModalDialogOptions {
+  navbarTower: NavbarTower;
+  modalDialogTower: ModalDialogTower;
+}
+
+export function openModalDialog({navbarTower, modalDialogTower}: ModalDialogOptions): FlightLeg {
+  return {
+    doTestAction: (instruments: AppInstruments) => {
+      navbarTower.openModalButton().click();
+    },
+    updateExpectations: (instruments: AppInstruments) => {
+      instruments.setIsPresent(modalDialogTower.instrumentIds(), true);
+    }
+  };
+}
+
+export function closeModalDialog({navbarTower, modalDialogTower}: ModalDialogOptions): FlightLeg {
+  return {
+    doTestAction: (instruments: AppInstruments) => {
+      modalDialogTower.closeButton().click();
+    },
+    updateExpectations: (instruments: AppInstruments) => {
+      instruments.setIsPresent(modalDialogTower.instrumentIds(), false);
     }
   };
 }

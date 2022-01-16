@@ -4,7 +4,8 @@ export function useUrls() {
   return {
     baseUrl,
     entryUrl: `${baseUrl}/`,
-    counterUrl: `${baseUrl}/counter`
+    counterUrl: `${baseUrl}/counter`,
+    loginUrl: `${baseUrl}/login`
   };
 }
 

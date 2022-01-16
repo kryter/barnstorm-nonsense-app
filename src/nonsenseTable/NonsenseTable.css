@@ -1,3 +1,7 @@
+.nonsense-table {
+  margin: auto;
+}
+
 .nonsense-table td {
   width: 20%;
 }

@@ -2,8 +2,35 @@ import { InstrumentSet } from '@kryter/barnstorm/lib/InstrumentSet';
 import { ButtonInstrument, UIElementInstrument } from '@kryter/barnstorm/lib/instruments';
 import { INSTRUMENT_TYPES } from '@kryter/barnstorm/lib/INSTRUMENT_TYPES';
 
-const navbarTabTable = {
-  id: 'navbarTabTable',
+const navbarHeading = {
+  id: 'navbarHeading',
+  instrumentType: INSTRUMENT_TYPES.UI_ELEMENT,
+  selector: '.app-title',
+  initialState: {
+    textContent: 'Barnstorm Nonsense'
+  }
+};
+
+const openModalButton = {
+  id: 'openModalButton',
+  instrumentType: INSTRUMENT_TYPES.BUTTON,
+  selector: '.open-modal-button',
+  initialState: {
+    textContent: 'Open Modal'
+  }
+};
+
+const navbarLoginTab = {
+  id: 'navbarLoginTab',
+  instrumentType: INSTRUMENT_TYPES.BUTTON,
+  selector: '.navbar-tab-button.navbar-tab-login',
+  initialState: {
+    textContent: 'Login'
+  }
+};
+
+const navbarTableTab = {
+  id: 'navbarTableTab',
   instrumentType: INSTRUMENT_TYPES.BUTTON,
   selector: '.navbar-tab-button.navbar-tab-table',
   initialState: {
@@ -11,8 +38,8 @@ const navbarTabTable = {
   }
 };
 
-const navbarTabCounter = {
-  id: 'navbarTabCounter',
+const navbarCounterTab = {
+  id: 'navbarCounterTab',
   instrumentType: INSTRUMENT_TYPES.BUTTON,
   selector: '.navbar-tab-button.navbar-tab-counter',
   initialState: {
@@ -20,28 +47,22 @@ const navbarTabCounter = {
   }
 };
 
-const navbarHeading = {
-  id: 'navbarHeading',
-  instrumentType: INSTRUMENT_TYPES.UI_ELEMENT,
-  selector: '.app-header h1',
-  initialState: {
-    textContent: 'Barnstorm Nonsense'
-  }
-};
-
 const configs = [
-  navbarTabTable,
-  navbarTabCounter,
-  navbarHeading
+  navbarHeading,
+  openModalButton,
+  navbarTableTab,
+  navbarCounterTab,
 ];
 
 export function setupNavbarTower(instruments: InstrumentSet) {
   instruments.createInstruments(configs);
 
   return {
-    navbarTabTable: () => instruments.use<ButtonInstrument>(navbarTabTable.id),
-    navbarTabCounter: () => instruments.use<ButtonInstrument>(navbarTabCounter.id),
     navbarHeading: () => instruments.use<UIElementInstrument>(navbarHeading.id),
+    openModalButton: () => instruments.use<ButtonInstrument>(openModalButton.id),
+    navbarLoginTab: () => instruments.use<ButtonInstrument>(navbarLoginTab.id),
+    navbarTabTable: () => instruments.use<ButtonInstrument>(navbarTableTab.id),
+    navbarTabCounter: () => instruments.use<ButtonInstrument>(navbarCounterTab.id),
     instrumentIds: () => configs.map((config) => config.id)
   };
 }

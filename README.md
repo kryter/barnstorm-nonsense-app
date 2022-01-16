@@ -18,11 +18,15 @@ Navigate to `http://localhost:3000/` and enjoy the nonsense manually!
 
 ### Running the End to End Tests
 
-Start Cypress:
+Run all tests by command line:
+
+`npm run e2e`
+
+Or, start Cypress UI:
 
 `npm run cypress:open`
 
-Pick any test and run it from the Cypress UI to see it in action.
+Pick any test and run it.
 
 ## Learn More About Barnstorm
 

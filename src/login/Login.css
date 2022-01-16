@@ -1,0 +1,12 @@
+.login-form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  text-align: left;
+}
+
+.form-item {
+  margin-bottom: 12px;
+}
