@@ -30,4 +30,4 @@ Pick any test and run it.
 
 ## Learn More About Barnstorm
 
-For more information on how to use Barnstorm, see the Barnstorm core project (<https://github.com/kryter/barnstorm>).
+For more information on how to use Barnstorm, see the [Barnstorm](<https://github.com/kryter/barnstorm>) core project.
