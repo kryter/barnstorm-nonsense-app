@@ -1,9 +1,9 @@
 import { FlightLeg } from '@kryter/barnstorm/lib/FlightLeg';
 import { NavbarTower } from './NavbarTower';
 import { CounterTower } from '../counter/CounterTower';
-import { AppInstruments } from '../useInstruments';
 import { useUrls } from '../useUrls';
 import { ModalDialogTower } from '../modal/ModalTower';
+import { InstrumentSet } from '@kryter/barnstorm/lib/InstrumentSet';
 
 export interface ClickNavbarTabOptions {
   navbarTower: NavbarTower;
@@ -12,11 +12,11 @@ export interface ClickNavbarTabOptions {
 
 export function clickNavbarTabCounter({navbarTower, counterTower}: ClickNavbarTabOptions): FlightLeg {
   return {
-    doTestAction: (instruments: AppInstruments) => {
+    doTestAction: (instruments: InstrumentSet) => {
       navbarTower.navbarTabCounter().click();
     },
-    updateExpectations: (instruments: AppInstruments) => {
-      instruments.setIsPresent(counterTower.instrumentIds(), true);
+    updateExpectations: (instruments: InstrumentSet) => {
+      instruments.setArePresent(counterTower.instrumentIds(), true);
       instruments.url().updateState({
         currentUrl: useUrls().counterUrl
       });
@@ -26,11 +26,11 @@ export function clickNavbarTabCounter({navbarTower, counterTower}: ClickNavbarTa
 
 export function clickNavbarTabTable({navbarTower, counterTower}: ClickNavbarTabOptions): FlightLeg {
   return {
-    doTestAction: (instruments: AppInstruments) => {
+    doTestAction: (instruments: InstrumentSet) => {
       navbarTower.navbarTabTable().click();
     },
-    updateExpectations: (instruments: AppInstruments) => {
-      instruments.setIsPresent(counterTower.instrumentIds(), false);
+    updateExpectations: (instruments: InstrumentSet) => {
+      instruments.setArePresent(counterTower.instrumentIds(), false);
       instruments.url().updateState({
         currentUrl: useUrls().entryUrl
       });
@@ -45,22 +45,22 @@ export interface ModalDialogOptions {
 
 export function openModalDialog({navbarTower, modalDialogTower}: ModalDialogOptions): FlightLeg {
   return {
-    doTestAction: (instruments: AppInstruments) => {
+    doTestAction: (instruments: InstrumentSet) => {
       navbarTower.openModalButton().click();
     },
-    updateExpectations: (instruments: AppInstruments) => {
-      instruments.setIsPresent(modalDialogTower.instrumentIds(), true);
+    updateExpectations: (instruments: InstrumentSet) => {
+      instruments.setArePresent(modalDialogTower.instrumentIds(), true);
     }
   };
 }
 
 export function closeModalDialog({navbarTower, modalDialogTower}: ModalDialogOptions): FlightLeg {
   return {
-    doTestAction: (instruments: AppInstruments) => {
+    doTestAction: (instruments: InstrumentSet) => {
       modalDialogTower.closeButton().click();
     },
-    updateExpectations: (instruments: AppInstruments) => {
-      instruments.setIsPresent(modalDialogTower.instrumentIds(), false);
+    updateExpectations: (instruments: InstrumentSet) => {
+      instruments.setArePresent(modalDialogTower.instrumentIds(), false);
     }
   };
 }

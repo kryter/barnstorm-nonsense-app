@@ -1,14 +1,14 @@
 /// <reference types="cypress" />
 
 import { useAirplane, FlyFunction } from '@kryter/barnstorm/lib/useAirplane';
-import { AppInstruments, useInstruments } from '../../barnstorm/useInstruments';
+import { useInstruments } from '../../barnstorm/useInstruments';
 import { CounterTower, setupCounterTower } from '../../barnstorm/counter/CounterTower';
 import { useUrls } from '../../barnstorm/useUrls';
 import { clickToIncrementTheCount, fillOutForm } from '../../barnstorm/counter/CounterFlightPlans';
-
+import { InstrumentSet } from '@kryter/barnstorm/lib/InstrumentSet';
 
 describe('Counter', () => {
-  let instruments: AppInstruments;
+  let instruments: InstrumentSet;
   let fly: FlyFunction;
   let counterTower: CounterTower;
 
@@ -18,6 +18,10 @@ describe('Counter', () => {
     counterTower = setupCounterTower(instruments);
 
     instruments.url().visit(useUrls().counterUrl);
+  });
+
+  it('Verify initial state', () => {
+    instruments.verifyState();
   });
 
   it('Fill out the form', () => {

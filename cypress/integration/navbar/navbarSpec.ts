@@ -1,14 +1,15 @@
 /// <reference types="cypress" />
 
-import {FlyFunction, useAirplane} from '@kryter/barnstorm/lib/useAirplane';
+import { InstrumentSet } from '@kryter/barnstorm/lib/InstrumentSet';
+import { FlyFunction, useAirplane } from '@kryter/barnstorm/lib/useAirplane';
 import { CounterTower, setupCounterTower } from '../../barnstorm/counter/CounterTower';
-import { AppInstruments, useInstruments } from '../../barnstorm/useInstruments';
+import { useInstruments } from '../../barnstorm/useInstruments';
 import { NavbarTower, setupNavbarTower } from '../../barnstorm/navbar/NavbarTower';
 import { useUrls } from '../../barnstorm/useUrls';
 import { clickNavbarTabCounter, clickNavbarTabTable } from '../../barnstorm/navbar/NavbarFlightPlans';
 
 describe('Navbar', () => {
-  let instruments: AppInstruments;
+  let instruments: InstrumentSet;
   let fly: FlyFunction;
   let counterTower: CounterTower;
   let navbarTower: NavbarTower;
@@ -20,6 +21,10 @@ describe('Navbar', () => {
     navbarTower = setupNavbarTower(instruments);
 
     instruments.url().visit(useUrls().counterUrl);
+  });
+
+  it('Verify initial state', () => {
+    instruments.verifyState();
   });
 
   it('Click the table tab to switch to the table page', () => {

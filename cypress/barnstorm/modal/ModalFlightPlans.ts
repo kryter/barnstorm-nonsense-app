@@ -25,7 +25,7 @@ export function openAndCloseModalDialog({navbarTower}: ModalOpenOptions): Flight
           modalDialogTower.closeButton().click();
         },
         updateExpectations: (instruments: InstrumentSet) => {
-          instruments.setIsPresent(modalDialogTower.instrumentIds(), false);
+          instruments.setArePresent(modalDialogTower.instrumentIds(), false);
         }
       },
       {

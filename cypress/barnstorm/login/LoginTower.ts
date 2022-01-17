@@ -17,7 +17,7 @@ const emailTextbox = {
   instrumentType: INSTRUMENT_TYPES.TEXT_BOX,
   selector: '.email-textbox',
   initialState: {
-    inputText: ''
+    textContent: ''
   }
 };
 
@@ -35,7 +35,7 @@ const passwordTextbox = {
   instrumentType: INSTRUMENT_TYPES.TEXT_BOX,
   selector: '.password-textbox',
   initialState: {
-    inputText: ''
+    textContent: ''
   }
 };
 

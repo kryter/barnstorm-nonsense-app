@@ -30,7 +30,7 @@ export function logIn({
         },
         updateExpectations: (instruments: InstrumentSet) => {
           loginTower.emailTextbox().updateState({
-            inputText: email
+            textContent: email
           });
         }
       },
@@ -40,7 +40,7 @@ export function logIn({
         },
         updateExpectations: (instruments: InstrumentSet) => {
           loginTower.passwordTextbox().updateState({
-            inputText: password
+            textContent: password
           });
         }
       },
@@ -49,7 +49,7 @@ export function logIn({
           loginTower.loginButton().click();
         },
         updateExpectations: (instruments: InstrumentSet) => {
-          instruments.setIsPresent(loginTower.instrumentIds(), false);
+          instruments.setArePresent(loginTower.instrumentIds(), false);
           instruments.url().updateState({
             currentUrl: useUrls().entryUrl
           });

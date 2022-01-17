@@ -2,7 +2,7 @@
 
 import { FlightLeg } from '@kryter/barnstorm/lib/FlightLeg';
 import { FlightPlan } from '@kryter/barnstorm/lib/FlightPlan';
-import { AppInstruments } from '../useInstruments';
+import { InstrumentSet } from '@kryter/barnstorm/lib/InstrumentSet';
 import {NonsenseTableTower, DATA_COLUMN_1, DATA_COLUMN_2, DATA_COLUMN_3} from './NonsenseTableTower';
 
 const expectedSmallData = {
@@ -98,10 +98,10 @@ export function swapTableDataBackAndForth({nonsenseTableTower}: SwapTableDataOpt
 
 export function swapToBigTableData({nonsenseTableTower}: SwapTableDataOptions): FlightLeg {
   return {
-    doTestAction: (instruments: AppInstruments) => {
+    doTestAction: (instruments: InstrumentSet) => {
       nonsenseTableTower.swapDataButton().click();
     },
-    updateExpectations: (instruments: AppInstruments) => {
+    updateExpectations: (instruments: InstrumentSet) => {
       nonsenseTableTower.nonsenseTable().updateState(expectedBigData);
     }
   };
@@ -109,10 +109,10 @@ export function swapToBigTableData({nonsenseTableTower}: SwapTableDataOptions): 
 
 export function swapToSmallTableData({nonsenseTableTower}: SwapTableDataOptions): FlightLeg {
   return {
-    doTestAction: (instruments: AppInstruments) => {
+    doTestAction: (instruments: InstrumentSet) => {
       nonsenseTableTower.swapDataButton().click();
     },
-    updateExpectations: (instruments: AppInstruments) => {
+    updateExpectations: (instruments: InstrumentSet) => {
       nonsenseTableTower.nonsenseTable().updateState(expectedSmallData);
     }
   };

@@ -2,7 +2,7 @@
 
 import { FlightLeg } from '@kryter/barnstorm/lib/FlightLeg';
 import { FlightPlan } from '@kryter/barnstorm/lib/FlightPlan';
-import { AppInstruments } from '../useInstruments';
+import { InstrumentSet } from '@kryter/barnstorm/lib/InstrumentSet';
 import { CounterTower } from './CounterTower';
 
 export interface ClickToIncrementTheCountOptions {
@@ -12,10 +12,10 @@ export interface ClickToIncrementTheCountOptions {
 
 export function clickToIncrementTheCount({counterTower, expectedCount}: ClickToIncrementTheCountOptions): FlightLeg {
   return {
-    doTestAction: (instruments: AppInstruments) => {
+    doTestAction: (instruments: InstrumentSet) => {
       counterTower.counterButton().click();
     },
-    updateExpectations: (instruments: AppInstruments) => {
+    updateExpectations: (instruments: InstrumentSet) => {
       counterTower.counterButton().updateState({
         textContent: `count is: ${expectedCount}`
       });
@@ -33,30 +33,30 @@ export function fillOutForm({counterTower, title, description}: FillOutFormOptio
   return {
     legs: [
       {
-        doTestAction: (instruments: AppInstruments) => {
+        doTestAction: (instruments: InstrumentSet) => {
           counterTower.titleTextBox().enterText(title);
         },
-        updateExpectations: (instruments: AppInstruments) => {
+        updateExpectations: (instruments: InstrumentSet) => {
           counterTower.titleTextBox().updateState({
-            inputText: title
+            textContent: title
           });
         }
       },
       {
-        doTestAction: (instruments: AppInstruments) => {
+        doTestAction: (instruments: InstrumentSet) => {
           counterTower.descriptionTextArea().enterText(description);
         },
-        updateExpectations: (instruments: AppInstruments) => {
+        updateExpectations: (instruments: InstrumentSet) => {
           counterTower.descriptionTextArea().updateState({
-            inputText: description
+            textContent: description
           });
         }
       },
       {
-        doTestAction: (instruments: AppInstruments) => {
+        doTestAction: (instruments: InstrumentSet) => {
           counterTower.aCheckbox().check();
         },
-        updateExpectations: (instruments: AppInstruments) => {
+        updateExpectations: (instruments: InstrumentSet) => {
           // The checkbox automatically updates its expected state,
           // so no updates are needed here.
         }
