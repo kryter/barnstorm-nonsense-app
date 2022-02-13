@@ -6,7 +6,9 @@ import { InstrumentOptions } from '@kryter/barnstorm/lib/instruments/instrument/
 const emailLabel = {
   id: 'emailLabel',
   instrumentType: INSTRUMENT_TYPES.UI_ELEMENT,
-  selector: '.email-label',
+  selector: {
+    css: '.email-label'
+  },
   initialState: {
     textContent: 'Email'
   }
@@ -15,7 +17,9 @@ const emailLabel = {
 const emailTextbox = {
   id: 'emailTextbox',
   instrumentType: INSTRUMENT_TYPES.TEXT_BOX,
-  selector: '.email-textbox',
+  selector: {
+    css: '.email-textbox'
+  },
   initialState: {
     textContent: ''
   }
@@ -24,7 +28,9 @@ const emailTextbox = {
 const passwordLabel = {
   id: 'passwordLabel',
   instrumentType: INSTRUMENT_TYPES.UI_ELEMENT,
-  selector: '.password-label',
+  selector: {
+    css: '.password-label'
+  },
   initialState: {
     textContent: 'Password'
   }
@@ -33,7 +39,9 @@ const passwordLabel = {
 const passwordTextbox = {
   id: 'passwordTextbox',
   instrumentType: INSTRUMENT_TYPES.TEXT_BOX,
-  selector: '.password-textbox',
+  selector: {
+    css: '.password-textbox'
+  },
   initialState: {
     textContent: ''
   }
@@ -42,7 +50,9 @@ const passwordTextbox = {
 const loginButton = {
   id: 'loginButton',
   instrumentType: INSTRUMENT_TYPES.BUTTON,
-  selector: '.log-in-button',
+  selector: {
+    css: '.log-in-button'
+  },
   initialState: {
     textContent: 'Log in'
   }

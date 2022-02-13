@@ -1,0 +1,11 @@
+.document-list {
+  margin-right: 24px;
+}
+
+.document-list-item {
+  padding: 8px;
+  width: 200px;
+  cursor: pointer;
+  list-style-type: none;
+  border: 1px solid black;
+}

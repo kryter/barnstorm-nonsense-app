@@ -10,7 +10,9 @@ export const DIALOG_COLOR = 'rgb(0, 0, 0)';
 const dialogBackdrop = {
   id: 'dialogBackdrop',
   instrumentType: INSTRUMENT_TYPES.BUTTON,
-  selector: '.modal-backdrop',
+  selector: {
+    css: '.modal-backdrop'
+  },
   initialState: {
     css: {
       'background-color': MODAL_BACKDROP_COLOR
@@ -21,7 +23,9 @@ const dialogBackdrop = {
 const dialog = {
   id: 'dialog',
   instrumentType: INSTRUMENT_TYPES.BUTTON,
-  selector: '.modal-dialog',
+  selector: {
+    css: '.modal-dialog'
+  },
   initialState: {
     css: {
       'background-color': DIALOG_BACKGROUND_COLOR
@@ -32,7 +36,9 @@ const dialog = {
 const dialogTitle = {
   id: 'dialogTitle',
   instrumentType: INSTRUMENT_TYPES.UI_ELEMENT,
-  selector: '.modal-title',
+  selector: {
+    css: '.modal-title'
+  },
   initialState: {
     textContent: 'Here is a Modal Dialog',
     css: {
@@ -44,7 +50,9 @@ const dialogTitle = {
 const closeButton = {
   id: 'closeButton',
   instrumentType: INSTRUMENT_TYPES.BUTTON,
-  selector: '.modal-close-button',
+  selector: {
+    css: '.modal-close-button'
+  },
   initialState: {
     textContent: ''
   }
@@ -53,7 +61,9 @@ const closeButton = {
 const modalContent = {
   id: 'modalContent',
   instrumentType: INSTRUMENT_TYPES.UI_ELEMENT,
-  selector: '.modal-content',
+  selector: {
+    css: '.modal-content'
+  },
   initialState: {
     textContent: 'Here is the modal content.',
     css: {

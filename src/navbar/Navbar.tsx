@@ -18,6 +18,7 @@ function Navbar() {
         <Link className="navbar-tab-button navbar-tab-login" to="/login">Login</Link>
         <Link className="navbar-tab-button navbar-tab-table" to="/">Table</Link>
         <Link className="navbar-tab-button navbar-tab-counter" to="/counter">Counter</Link>
+        <Link className="navbar-tab-button navbar-tab-documents" to="/documents">Documents</Link>
       </div>
       {isModalOpen && <ModalDialog closeModalDialog={() => setIsModalOpen(false)}></ModalDialog>}
     </header>

@@ -1,0 +1,13 @@
+.document-editor-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.selected-document {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-item {
+  margin-bottom: 12px;
+}

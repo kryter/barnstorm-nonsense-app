@@ -11,23 +11,31 @@ export const DATA_COLUMN_3 = 'DATA_COLUMN_3';
 const nonsenseTable = {
   id: 'nonsenseTable',
   instrumentType: INSTRUMENT_TYPES.LIST,
-  selector: '.nonsense-table',
+  selector: {
+    css: '.nonsense-table'
+  },
   relativeItemSelector: 'tr.data-row',
   columns: [
     {
       id: DATA_COLUMN_1,
       instrumentType: INSTRUMENT_TYPES.UI_ELEMENT,
-      selector: 'td.data-column-1'
+      selector: {
+        css: 'td.data-column-1'
+      }
     },
     {
       id: DATA_COLUMN_2,
       instrumentType: INSTRUMENT_TYPES.UI_ELEMENT,
-      selector: 'td.data-column-2'
+      selector: {
+        css: 'td.data-column-2'
+      }
     },
     {
       id: DATA_COLUMN_3,
       instrumentType: INSTRUMENT_TYPES.UI_ELEMENT,
-      selector: 'td.data-column-3'
+      selector: {
+        css: 'td.data-column-3'
+      }
     }
   ],
   initialState: {
@@ -72,7 +80,9 @@ const nonsenseTable = {
 const swapDataButton = {
   id: 'swapDataButton',
   instrumentType: INSTRUMENT_TYPES.BUTTON,
-  selector: '.swap-data-button',
+  selector: {
+    css: '.swap-data-button'
+  },
   initialState: {
     textContent: 'Swap data set'
   }

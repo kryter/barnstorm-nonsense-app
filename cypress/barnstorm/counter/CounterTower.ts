@@ -8,7 +8,9 @@ import { TextBoxInstrument } from '@kryter/barnstorm/lib/instruments';
 const titleTextBox = {
   id: 'titleTextBox',
   instrumentType: INSTRUMENT_TYPES.TEXT_BOX,
-  selector: '.title-text-box',
+  selector: {
+    css: '.title-text-box'
+  },
   initialState: {
     textContent: ''
   }
@@ -17,7 +19,9 @@ const titleTextBox = {
 const descriptionTextArea = {
   id: 'descriptionTextArea',
   instrumentType: INSTRUMENT_TYPES.TEXT_AREA,
-  selector: '.description-text-area',
+  selector: {
+    css: '.description-text-area'
+  },
   initialState: {
     textContent: ''
   }
@@ -26,7 +30,9 @@ const descriptionTextArea = {
 const aCheckbox = {
   id: 'aCheckbox',
   instrumentType: INSTRUMENT_TYPES.CHECKBOX,
-  selector: '.confirm-checkbox',
+  selector: {
+    css: '.confirm-checkbox'
+  },
   initialState: {
     isChecked: false
   }
@@ -35,7 +41,9 @@ const aCheckbox = {
 const counterButton = {
   id: 'counterButton',
   instrumentType: INSTRUMENT_TYPES.BUTTON,
-  selector: '.counter-button',
+  selector: {
+    css: '.counter-button'
+  },
   initialState: {
     textContent: 'count is: 0'
   }
